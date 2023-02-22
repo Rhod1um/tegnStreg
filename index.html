@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Streg</title>
+    <!--index html skal ligge i roden ellers skal man specificere folder på azure(git?)-->
+</head>
+<body>
+<canvas width="600" height="300"></canvas>
+
+<script>
+    const cx = document.querySelector("canvas").getContext("2d") //erik ved ikke hvorfor vi skal skrive det her
+    //men nu har vi fat i canvas så vi kan tegne på det
+
+    let red = 233
+    let green = 123
+    let blue = 123
+
+    function randomColor(){
+        red = Math.trunc(Math.random()*100)
+        green = Math.trunc(Math.random()*100)
+        blue = Math.trunc(Math.random()*100)
+        console.log("red: " + red)
+        console.log("green: " + green)
+        console.log("blue: " + blue)
+    }
+
+
+    function branch(length, angle, scale){
+        randomColor()
+        //red = 255, blue=0, green=0
+        cx.fillStyle = `rgb(${red},${green},${blue})`
+        cx.fillRect(0, 0, 1, length) //fillrect laver en kasse, her er den tynd så det er en streg
+        if(length<8) return
+        cx.save()
+        cx.translate(0,length)
+        cx.rotate(-angle)
+        //autogener farve på blomsteb:
+        //cx.fillStyle = "rgb(233,123,123)"
+        branch(length*scale, angle, scale)
+        cx.rotate(2*angle)
+        branch(length*scale, angle, scale) //rekursiv, uendeligt loop, giver fejl i inspect
+        //length*scale ændre længden i det rekursive kald, derfor bliver stregen mindre og mindre
+        //ud over at vinklen ændres
+        cx.restore()
+    }
+    cx.translate(200,0)
+    branch(60, 0.5, 0.8)
+
+</script>
+
+</body>
+</html>
