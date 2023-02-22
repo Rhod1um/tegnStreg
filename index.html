@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Streg</title>
-    <!--index html skal ligge i roden ellers skal man specificere folder på azure(git?)-->
+    <!--index html skal ligge i roden ellers skal man specificere folder på azure app service
+    det er under app location at index.html skal specificeres, skriv bare / hvis den er i roden
+
+    når vi lægger et projekt på azure app service laver den automatisk en github actions
+    man får en github actions yaml fil ned, sp husk at pull. se på github repo for projektet
+    hvordan github actions ser ud.
+
+     den køre på ubuntu på github action
+     muligvis, actions/checkout har noget med node.js at gøre og virker ikke hvis package.json er der
+     fordi den ikke understøttes af en bestemt version af node (??)
+     yaml og github actions skal man ikke forklare i detaljer til eksamen, kun overordnet
+
+
+     på azure app service får man en url for ens app service projekt og så ser man projektet på
+     den url. azure autogenerer en url. Man kan købe sit eget domæne navn og mappe det til azures
+     appservice
+     -->
 </head>
 <body>
 <canvas width="600" height="300"></canvas>
